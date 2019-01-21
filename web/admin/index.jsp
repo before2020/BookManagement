@@ -8,8 +8,8 @@
 <head>
     <title>图书管理系统</title>
     <frameset rows="25%, 75%">
-        <frame src="${ctx}/admin/header.jsp" frameborder="0"/>
-        <frame src="${ctx}/BookServlet?action=getBookList" frameborder="border"/>
+        <frame src="${ctx}/admin/header.jsp" frameborder="0" scrolling="NO"/>
+        <frame name="main_view" src="${ctx}/BookServlet?action=getBookList" frameborder="border"/>
     </frameset>
 </head>
 <body>

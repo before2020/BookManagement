@@ -3,6 +3,7 @@ package com.books.dao;
 import com.books.domain.Book;
 import com.books.util.JdbcUtil;
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import java.sql.SQLException;
@@ -16,6 +17,12 @@ public class BookDao
     {
         String sql = "select * from book";
         return qr.query(sql, new BeanListHandler<Book>(Book.class));
+    }
+
+    public Book getBookById(int bid) throws SQLException
+    {
+        String sql = "select * from book where bid=?";
+        return qr.query(sql, new BeanHandler<>(Book.class), bid);
     }
 
     public void addBook(Book book) throws SQLException

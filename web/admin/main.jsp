@@ -30,8 +30,8 @@
                 <td>${book.category}</td>
                 <td>${book.year}</td>
                 <td>${book.price}</td>
-                <td><a href="${ctx}/BookServlet?action=edit&bid=${book.bid}">编辑</a></td>
-                <td>删除</td>
+                <td><a href="${ctx}/BookServlet?action=updatePage&bid=${book.bid}">编辑</a></td>
+                <td><a href="${ctx}/BookServlet?action=delete&bid=${book.bid}">删除</a></td>
             </tr>
         </c:forEach>
     </table>

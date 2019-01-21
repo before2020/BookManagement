@@ -24,7 +24,9 @@
         <div class="Input-wrapper">
             <input type="password" name="password" placeholder="密码" class="Input"/>
         </div>
-        <button id="Login-button">登录</button>
+        <div class="Button-wrapper">
+            <button class="button">登录</button>
+        </div>
 
         <c:if test="${loginState eq 'fail'}">
             <div id="Fail-message">登录失败</div>
