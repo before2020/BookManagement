@@ -29,7 +29,7 @@ public class BookDao
     {
         String sql = "insert into book values (null,?,?,?,?,?,?)";
         qr.update(sql, book.getTitle(), book.getAuthor(), book.getPress(),
-                book.getCategory(), book.getYear(), book.getPrice());
+                book.getCategory(), book.getDate(), book.getPrice());
     }
 
     public void deleteBook(int bid) throws SQLException
@@ -41,9 +41,9 @@ public class BookDao
     public void updateBook(Book book, int bid) throws SQLException
     {
         String sql = "update book set title = ?, author = ?, press = ?, " +
-                "category = ?, year = ?, price = ? where bid = ?";
+                "category = ?, date = ?, price = ? where bid = ?";
 
         qr.update(sql, book.getTitle(), book.getAuthor(), book.getPress(),
-                book.getCategory(), book.getYear(), book.getPrice(), bid);
+                book.getCategory(), book.getDate(), book.getPrice(), bid);
     }
 }

@@ -36,4 +36,10 @@ public class BookService
         BookDao bookDao = new BookDao();
         bookDao.deleteBook(Integer.parseInt(bid));
     }
+
+    public void addBook(Book book) throws SQLException
+    {
+        BookDao bookDao = new BookDao();
+        bookDao.addBook(book);
+    }
 }

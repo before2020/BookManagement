@@ -24,7 +24,7 @@ public class BookDaoTest
         book.setAuthor("舍恩伯格");
         book.setPress("浙江人民出版社");
         book.setCategory("科技");
-        book.setYear(2012);
+        book.setDate("2012-07");
         book.setPrice(49.9);
         bookDao.addBook(book);
     }
@@ -43,7 +43,7 @@ public class BookDaoTest
         book.setAuthor("贡布里希");
         book.setPress("广西美术出版社 ");
         book.setCategory("艺术");
-        book.setYear(2015);
+        book.setDate("2008-04");
         book.setPrice(280.0);
         bookDao.updateBook(book, 2);
     }

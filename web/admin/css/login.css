@@ -6,7 +6,7 @@ body {
     margin: 150px auto;
     padding: 20px 20px 30px 20px;
     width: 400px;
-    border: 1px transparent;
+    border: 6px solid #979797;
     border-radius: 20px;
     min-height: 360px;
     font-family: "Microsoft YaHei UI Light", serif;

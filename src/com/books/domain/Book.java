@@ -11,7 +11,7 @@ public class Book
     private String author;
     private String press;
     private String category;
-    private Integer year;
+    private String date;
     private Double price;
 
     @Override
@@ -23,7 +23,7 @@ public class Book
                 ", author='" + author + '\'' +
                 ", press='" + press + '\'' +
                 ", category='" + category + '\'' +
-                ", year=" + year +
+                ", date=" + date +
                 ", price=" + price +
                 '}';
     }

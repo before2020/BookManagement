@@ -17,7 +17,7 @@
             <th>作者</th>
             <th>出版社</th>
             <th>类别</th>
-            <th>年份</th>
+            <th>日期</th>
             <th>售价</th>
         </tr>
 
@@ -28,7 +28,7 @@
                 <td>${book.author}</td>
                 <td>${book.press}</td>
                 <td>${book.category}</td>
-                <td>${book.year}</td>
+                <td>${book.date}</td>
                 <td>${book.price}</td>
                 <td><a href="${ctx}/BookServlet?action=updatePage&bid=${book.bid}">编辑</a></td>
                 <td><a href="${ctx}/BookServlet?action=delete&bid=${book.bid}">删除</a></td>
