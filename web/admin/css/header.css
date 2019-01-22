@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: rgba(20, 134, 149, 1);
+}
+#main {
+    margin: 0 auto;
+    width: 600px;
+    height: 400px;
+    letter-spacing: 1px;
+}
+#main .title {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    font-size: 50px;
+    font-weight: lighter;
+    color: white;
+    text-align: center;
+    letter-spacing: 3px;
+}
+#main .choice {
+    margin: 0 auto;
+    background-color: hotpink;
+    color: white;
+    font-size: 20px;
+    width: 200px;
+}
+#main a{
+    text-decoration: none;
+    color: white;
+}
+#main .choice .show {
+    float: left;
+}
+#main .choice .add {
+    float: right;
+}
