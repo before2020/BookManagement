@@ -1,3 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+}
+.Search-wrapper {
+    width: 70%;
+    height: 40px;
+    line-height: 30px;
+    margin: 18px auto;
+    text-align: right;
+}
+
+.Search-wrapper input, select {
+    border: 1.5px solid black;
+    border-radius: 5px;
+    display: inline-block;
+    height: 40px;
+    font-size: 20px;
+    padding: 3px 5px 3px 5px;
+    margin: 0 5px;
+    vertical-align: middle;
+}
+.Search-wrapper input[type="submit"] {
+    padding: 2px 5px 2px 5px;
+    text-align: center;
+    color: white;
+    background-color: rgba(20, 134, 149, 1);
+    border: none;
+}
+.Search-wrapper input[type="submit"]:hover {
+    background-color: lightseagreen;
+    cursor: pointer;
+}
 .Table-wrapper {
     box-sizing: border-box;
     width: 1000px;

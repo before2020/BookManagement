@@ -10,6 +10,21 @@
     <link rel="stylesheet" href="${ctx}/admin/css/main.css" type="text/css"/>
 </head>
 <body>
+
+<div class="Search-wrapper">
+    <form action="${ctx}/BookServlet?action=search" method="post">
+        <select name="searchType">
+            <option value="title">书名</option>
+            <option value="author">作者</option>
+            <option value="press">出版社</option>
+            <option value="category">类别</option>
+        </select>
+        <input type="text" name="searchContent">
+        <input type="submit" value="搜索">
+    </form>
+
+</div>
+
 <div class="Table-wrapper" align="center">
     <table class="Table">
         <tr>
