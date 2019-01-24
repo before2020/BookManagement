@@ -20,12 +20,12 @@ public class BookDaoTest
     public void testAddBook() throws SQLException
     {
         Book book = new Book();
-        book.setTitle("大数据时代");
-        book.setAuthor("舍恩伯格");
-        book.setPress("浙江人民出版社");
-        book.setCategory("科技");
-        book.setDate("2012-07");
-        book.setPrice(49.9);
+        book.setTitle("艺术的故事");
+        book.setAuthor("[英] 贡布里希");
+        book.setPress("广西美术出版社 ");
+        book.setCategory("艺术");
+        book.setDate("2008-04");
+        book.setPrice(280.0);
         bookDao.addBook(book);
     }
 
@@ -40,11 +40,19 @@ public class BookDaoTest
     {
         Book book = new Book();
         book.setTitle("艺术的故事");
-        book.setAuthor("贡布里希");
+        book.setAuthor("[英] 贡布里希");
         book.setPress("广西美术出版社 ");
         book.setCategory("艺术");
         book.setDate("2008-04");
         book.setPrice(280.0);
         bookDao.updateBook(book, 2);
+    }
+
+    @Test
+    public void testSearch() throws SQLException
+    {
+        BookDao bookDao = new BookDao();
+        List<Book> result = bookDao.search("press", "人民");
+        System.out.println(result);
     }
 }

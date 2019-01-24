@@ -42,4 +42,10 @@ public class BookService
         BookDao bookDao = new BookDao();
         bookDao.addBook(book);
     }
+
+    public List<Book> search(String searchType, String searchContent) throws SQLException
+    {
+        BookDao bookDao = new BookDao();
+        return bookDao.search(searchType, searchContent);
+    }
 }

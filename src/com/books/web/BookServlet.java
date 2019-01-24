@@ -2,16 +2,20 @@ package com.books.web;
 
 import com.books.domain.Book;
 import com.books.service.BookService;
+import org.apache.catalina.Session;
 import org.apache.commons.beanutils.BeanUtils;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.SQLException;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
 
@@ -40,8 +44,10 @@ public class BookServlet extends HttpServlet
         }
     }
 
+
     public String getBookList(HttpServletRequest request, HttpServletResponse response)
     {
+        clearSession(request);
         BookService bookService = new BookService();
         try {
             List<Book> bookList = bookService.getBookList();
@@ -74,7 +80,7 @@ public class BookServlet extends HttpServlet
         } catch (InvocationTargetException | IllegalAccessException | SQLException e) {
             e.printStackTrace();
         }
-        return "BookServlet?action=getBookList";
+        return getDest(request);
     }
 
     public String delete(HttpServletRequest request, HttpServletResponse response)
@@ -86,13 +92,10 @@ public class BookServlet extends HttpServlet
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return "BookServlet?action=getBookList";
+        return getDest(request);
     }
 
-    public String addPage(HttpServletRequest request, HttpServletResponse response)
-    {
-        return "admin/add.jsp";
-    }
+
 
     public String addBook(HttpServletRequest request, HttpServletResponse response)
     {
@@ -106,5 +109,63 @@ public class BookServlet extends HttpServlet
         }
 
         return "BookServlet?action=getBookList";
+    }
+
+    public String search(HttpServletRequest request, HttpServletResponse response)
+    {
+        String searchType = request.getParameter("searchType");
+        String searchContent = request.getParameter("searchContent");
+
+        //没有搜索任何内容则返回首页
+        if(searchContent == null) { return "admin/main.jsp"; }
+
+        BookService bookService = new BookService();
+        try {
+            List<Book> result = bookService.search(searchType, searchContent);
+            if(result != null)
+            {
+                // 为了update或delete之后返回result.jsp
+                HttpSession session = request.getSession();
+                session.setAttribute("searchType", searchType);
+                session.setAttribute("searchContent", searchContent);
+
+                request.setAttribute("result", result);
+                request.setAttribute("count", result.size());
+            }
+            else {
+                request.setAttribute("count", "0");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return "admin/result.jsp";
+    }
+
+    public String addPage(HttpServletRequest request, HttpServletResponse response)
+    {
+        return "admin/add.jsp";
+    }
+
+    private String getDest(HttpServletRequest request)
+    {
+        HttpSession session = request.getSession();
+        if(session.getAttribute("searchType") != null)
+        {
+            return "BookServlet?action=search&searchType=" +
+                    session.getAttribute("searchType") +
+                    "&searchContent=" + session.getAttribute("searchContent");
+        }
+        else
+        {
+            return "BookServlet?action=getBookList";
+        }
+    }
+
+    private void clearSession(HttpServletRequest request)
+    {
+        HttpSession session = request.getSession();
+        session.removeAttribute("searchType");
+        session.removeAttribute("searchContent");
     }
 }

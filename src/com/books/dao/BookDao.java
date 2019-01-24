@@ -46,4 +46,10 @@ public class BookDao
         qr.update(sql, book.getTitle(), book.getAuthor(), book.getPress(),
                 book.getCategory(), book.getDate(), book.getPrice(), bid);
     }
+
+    public List<Book> search(String searchType, String searchContent) throws SQLException
+    {
+        String sql = "select * from book where " + searchType + " like ?";
+        return qr.query(sql, new BeanListHandler<Book>(Book.class),  "%" + searchContent + "%");
+    }
 }
