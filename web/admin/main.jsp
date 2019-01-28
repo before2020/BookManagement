@@ -10,7 +10,13 @@
     <link rel="stylesheet" href="${ctx}/admin/css/main.css" type="text/css"/>
 </head>
 <body>
-
+<div class="">
+    <select name="orderBy">
+        <option value="title">书名</option>
+        <option value="date">出版日期</option>
+        <option value="price">价格</option>
+    </select>
+</div>
 <div class="Search-wrapper">
     <form action="${ctx}/BookServlet?action=search" method="post">
         <select name="searchType">
